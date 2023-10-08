@@ -1,10 +1,13 @@
+# Этап сборки
 FROM maven:3.6-jdk-11 AS build
 WORKDIR /backend
 COPY ./pom.xml ./
 COPY ./src ./src
 
-RUN mvn package -DskipTests
+# Сборка приложения
+RUN mvn package
 
+# Этап выполнения
 FROM openjdk:11-jre
-COPY --from=build /backend/target/*.jar /app/backend.jar
-CMD ["java", "-jar", "/app/backend.jar"]
+COPY --from=build /backend/target/*-runner.jar /app/backend-runner.jar
+CMD ["java", "-jar", "/app/backend-runner.jar"]
