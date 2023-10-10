@@ -68,10 +68,12 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>${compiler-plugin.version}</version>
         <configuration>
-          <compilerArgs>
+        <source>11</source>
+        <target>11</target>
+        <compilerArgs>
             <arg>-parameters</arg>
-          </compilerArgs>
-        </configuration>
+        </compilerArgs>
+    </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
